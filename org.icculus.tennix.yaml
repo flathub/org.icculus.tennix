@@ -1,6 +1,6 @@
 app-id: org.icculus.tennix
 runtime: org.freedesktop.Platform
-runtime-version: '21.08'
+runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
 command: tennix
 rename-icon: tennix
@@ -15,22 +15,15 @@ finish-args:
   - --device=dri
 
 modules:
-  - shared-modules/glu/glu-9.json
-
-  - name: sdl12-compat
-    buildsystem: cmake-ninja
+  - name: SDL2_gfx
+    buildsystem: autotools
     cleanup:
       - '*.a'
       - /include
     sources:
       - type: archive
-        url: https://github.com/libsdl-org/sdl12-compat/archive/refs/tags/release-1.2.52.tar.gz
-        sha256: 5bd7942703575554670a8767ae030f7921a0ac3c5e2fd173a537b7c7a8599014
-
-  - shared-modules/SDL/SDL_image-1.2.12.json
-  - shared-modules/SDL/SDL_mixer-1.2.12.json
-  - shared-modules/SDL/SDL_net-1.2.8.json
-  - shared-modules/SDL/SDL_ttf-2.0.11.json
+        url: https://downloads.sourceforge.net/project/sdl2gfx/SDL2_gfx-1.0.4.tar.gz
+        sha256: 63e0e01addedc9df2f85b93a248f06e8a04affa014a835c2ea34bfe34e576262
 
   - name: tennix
     buildsystem: simple
@@ -43,7 +36,11 @@ modules:
     sources:
       - type: git
         url: https://repo.or.cz/tennix.git
-        commit: 2244bfcaa9756c72492030713ccd3ea9148a67e3
+        tag: tennix-1.3.2
+        commit: 58fb5c0aced0d4c86c48a20d77a6c9f00dd81c05
+        x-checker-data:
+          type: git
+          tag-pattern: ^tennix-([\d.]+)$
       - type: file
         path: tennix.svg
       - type: file
