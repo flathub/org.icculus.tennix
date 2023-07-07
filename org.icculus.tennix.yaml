@@ -36,8 +36,8 @@ modules:
     sources:
       - type: git
         url: https://repo.or.cz/tennix.git
-        tag: tennix-1.3.2
-        commit: 58fb5c0aced0d4c86c48a20d77a6c9f00dd81c05
+        tag: tennix-1.3.4
+        commit: 9c8f18e023fea7d5064ae554b8c21435d9859816
         x-checker-data:
           type: git
           tag-pattern: ^tennix-([\d.]+)$
