@@ -1,6 +1,6 @@
 app-id: org.icculus.tennix
 runtime: org.freedesktop.Platform
-runtime-version: '21.08'
+runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
 command: tennix
 rename-icon: tennix
