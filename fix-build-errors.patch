@@ -1,0 +1,37 @@
+From c788d0314190b5236f38a91161fb480a6be8371b Mon Sep 17 00:00:00 2001
+From: Sabri Ünal <yakushabb@gmail.com>
+Date: Sat, 30 May 2026 01:07:02 +0300
+Subject: [PATCH] Fix build errors
+
+Based on Gemini AI suggestions.
+
+Signed-off-by: Sabri Ünal <yakushabb@gmail.com>
+---
+ configure | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure b/configure
+index e5da2ce..830d35b 100755
+--- a/configure
++++ b/configure
+@@ -6,7 +6,7 @@ V="1.3.4"
+ SILENT="1"
+ PYTHON="1"
+ PREFIX="/usr/local"
+-DEFAULT_CFLAGS="-I. -Wall -fPIC"
++DEFAULT_CFLAGS="-I. -I/app/include/SDL2 -Wall -fPIC"
+ 
+ if [ -z "$CC" ]; then
+     CC="gcc"
+@@ -215,7 +215,7 @@ check_library() {
+     HAVE_HEADER=$?
+     if [ $HAVE_LINKER -eq 0 -a $HAVE_HEADER -eq 0 ]; then
+         add_definition $DEFINE
+-        LDFLAGS="-l$LIBRARY $LDFLAGS"
++        LDFLAGS="-l$LIBRARY -L/app/lib $LDFLAGS"
+     else
+         no_definition $DEFINE
+         return 1
+--
+libgit2 1.7.2
+
